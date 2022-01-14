@@ -1,4 +1,4 @@
-<h1>Listing Live songs</h1>
+<h1>One Song a Day</h1>
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.live_song_index_path(@socket, :index)}>
@@ -25,13 +25,13 @@
   </thead>
   <tbody id="live_songs">
     <%= for live_song <- @live_songs do %>
+      <%# <%= to:Routes.live_song_show_path(@socket, :show, live_song ) %>  
       <tr id={"live_song-#{live_song.id}"}>
-        <td><%= live_song.title %></td>
-        <td><%= if live_song.youtube_link do %><div>youtube icon</div><% end %></td>
-        <td><%= if live_song.spotify_link do %><div>spotify icon</div><% end %></td>
+        <td><%= live_redirect live_song.title, to: Routes.live_song_show_path(@socket, :show, live_song) %></td>
+        <td><%= if live_song.youtube_link do %><div><%= link "youtube", to: live_song.youtube_link, target: "blank"%></div><% end %></td>
+        <td><%= if live_song.spotify_link do %><div><%= link "spotify", to: live_song.spotify_link, target: "blank"%></div><% end %></td>
 
         <td>
-          <span><%= live_redirect "Show", to: Routes.live_song_show_path(@socket, :show, live_song) %></span>
           <span><%= live_patch "Edit", to: Routes.live_song_index_path(@socket, :edit, live_song) %></span>
           <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: live_song.id, data: [confirm: "Are you sure?"] %></span>
         </td>
@@ -40,4 +40,4 @@
   </tbody>
 </table>
 
-<span><%= live_patch "New Live song", to: Routes.live_song_index_path(@socket, :new) %></span>
+<span><%= live_patch "New song", to: Routes.live_song_index_path(@socket, :new) %></span>

@@ -32,7 +32,7 @@ defmodule OneSongADayWeb.LiveSongLive.FormComponent do
       {:ok, _live_song} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Live song updated successfully")
+         |> put_flash(:info, "song updated successfully")
          |> push_redirect(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -45,7 +45,7 @@ defmodule OneSongADayWeb.LiveSongLive.FormComponent do
       {:ok, _live_song} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Live song created successfully")
+         |> put_flash(:info, "song created successfully")
          |> push_redirect(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->

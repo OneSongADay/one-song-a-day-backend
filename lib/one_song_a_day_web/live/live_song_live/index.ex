@@ -18,13 +18,13 @@ defmodule OneSongADayWeb.LiveSongLive.Index do
 
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
-    |> assign(:page_title, "Edit Live song")
+    |> assign(:page_title, "Edit song")
     |> assign(:live_song, LiveSongs.get_live_song!(id))
   end
 
   defp apply_action(socket, :new, _params) do
     socket
-    |> assign(:page_title, "New Live song")
+    |> assign(:page_title, "New song")
     |> assign(:live_song, %LiveSong{})
   end
 

@@ -23,8 +23,8 @@ defmodule OneSongADayWeb.LiveSongLive.Show do
     {:noreply, fetch(socket)}
   end
 
-  defp page_title(:show), do: "Show Live song"
-  defp page_title(:edit), do: "Edit Live song"
+  defp page_title(:show), do: "Show song"
+  defp page_title(:edit), do: "Edit song"
 
   defp fetch(socket) do
     assign(socket, live_songs: LiveSongs.list_live_songs())

@@ -31,7 +31,7 @@ defmodule OneSongADay.LiveSongs do
   @doc """
   Gets a single live_song.
 
-  Raises `Ecto.NoResultsError` if the Live song does not exist.
+  Raises `Ecto.NoResultsError` if the song does not exist.
 
   ## Examples
 

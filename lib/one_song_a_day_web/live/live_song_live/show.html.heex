@@ -1,4 +1,4 @@
-<h1>Show Live song</h1>
+<h1><%= @live_song.title %></h1>
 
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.live_song_show_path(@socket, :show, @live_song)}>
@@ -16,18 +16,12 @@
 <ul>
 
   <li>
-    <strong>Title:</strong>
-    <%= @live_song.title %>
+    <iframe width="560" height="315" src={ @live_song.youtube_link } title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </li>
 
   <li>
-    <strong>Youtube link:</strong>
-    <%= @live_song.youtube_link %>
-  </li>
 
-  <li>
-    <strong>Spotify link:</strong>
-    <%= @live_song.spotify_link %>
+    <%= link "Spotify link", to: @live_song.spotify_link, target: "blank"%>
   </li>
 
 </ul>
