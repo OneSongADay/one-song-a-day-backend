@@ -17,6 +17,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Author</th>
       <th>Youtube</th>
       <th>Spotify</th>
       <th>Release date</th>
@@ -30,6 +31,7 @@
       <%# <%= to:Routes.live_song_show_path(@socket, :show, live_song ) %>  
       <tr id={"live_song-#{live_song.id}"}>
         <td><%= live_redirect live_song.title, to: Routes.live_song_show_path(@socket, :show, live_song) %></td>
+        <td><%= live_redirect live_song.author, to: Routes.live_song_show_path(@socket, :show, live_song) %></td>
         <td><%= if live_song.youtube_link do %><div><%= link "youtube", to: live_song.youtube_link, target: "blank"%></div><% end %></td>
         <td><%= if live_song.spotify_link do %><div><%= link "spotify", to: live_song.spotify_link, target: "blank"%></div><% end %></td>
         <td><%= if live_song.release_date do %><div><%= Timex.format!(live_song.release_date, "{D}-{0M}-{YYYY}") %></div><% end %></td>

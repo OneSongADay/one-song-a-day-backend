@@ -10,9 +10,11 @@ defmodule OneSongADayWeb.LiveSongView do
     %{
       id: live_song.id,
       title: live_song.title,
+      author: live_song.author,
       release_date: live_song.release_date,
       spotify_link: live_song.spotify_link,
-      youtube_link: live_song.youtube_link
+      youtube_link: live_song.youtube_link,
+      tweet_text: live_song.tweet_text
     }
   end
 end
