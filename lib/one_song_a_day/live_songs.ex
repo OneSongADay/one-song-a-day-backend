@@ -25,11 +25,6 @@ defmodule OneSongADay.LiveSongs do
 
   """
   def list_live_songs do
-    ExTwitter.search("elixir-lang", count: 5)
-    |> Enum.map(fn tweet -> tweet.text end)
-    |> Enum.join("\n-----\n")
-    |> IO.puts()
-
     query =
       from s in LiveSong,
         select:
