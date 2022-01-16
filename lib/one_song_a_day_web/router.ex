@@ -1,6 +1,8 @@
 defmodule OneSongADayWeb.Router do
   use OneSongADayWeb, :router
 
+  alias OneSongADayWeb.LiveSongController
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -12,6 +14,8 @@ defmodule OneSongADayWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    get "/onesongaday", LiveSongController, :index
   end
 
   scope "/", OneSongADayWeb do

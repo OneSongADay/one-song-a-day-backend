@@ -4,6 +4,7 @@ defmodule OneSongADay.LiveSongs do
   """
 
   import Ecto.Query, warn: false
+
   alias OneSongADay.Repo
 
   alias OneSongADay.LiveSongs.LiveSong
@@ -42,6 +43,17 @@ defmodule OneSongADay.LiveSongs do
 
   """
   def get_live_song!(id), do: Repo.get!(LiveSong, id)
+
+  def list_song_of_the_day do
+    query =
+      from s in LiveSong,
+        select: struct(s, [:id, :title, :youtube_link, :spotify_link, :release_date]),
+        where: s.release_date > ^NaiveDateTime.utc_now(),
+        order_by: [asc: :release_date],
+        limit: 1
+
+    Repo.one(query)
+  end
 
   @doc """
   Creates a live_song.
