@@ -20,6 +20,7 @@
       <th>Youtube</th>
       <th>Spotify</th>
       <th>Release date</th>
+      <th>Tweet</th>
 
       <th></th>
     </tr>
@@ -32,6 +33,7 @@
         <td><%= if live_song.youtube_link do %><div><%= link "youtube", to: live_song.youtube_link, target: "blank"%></div><% end %></td>
         <td><%= if live_song.spotify_link do %><div><%= link "spotify", to: live_song.spotify_link, target: "blank"%></div><% end %></td>
         <td><%= if live_song.release_date do %><div><%= Timex.format!(live_song.release_date, "{D}-{0M}-{YYYY}") %></div><% end %></td>
+        <td><%= if live_song.tweet_text do %>OK<% end %></td>
 
         <td>
           <span><%= live_patch "Edit", to: Routes.live_song_index_path(@socket, :edit, live_song) %></span>

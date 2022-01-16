@@ -7,6 +7,7 @@ defmodule OneSongADay.LiveSongs.LiveSong do
     field :title, :string
     field :youtube_link, :string
     field :release_date, :naive_datetime
+    field :tweet_text, :string
 
     timestamps()
   end
@@ -14,7 +15,7 @@ defmodule OneSongADay.LiveSongs.LiveSong do
   @doc false
   def changeset(live_song, attrs) do
     live_song
-    |> cast(attrs, [:title, :youtube_link, :spotify_link, :release_date])
-    |> validate_required([:title, :youtube_link, :spotify_link, :release_date])
+    |> cast(attrs, [:title, :youtube_link, :spotify_link, :release_date, :tweet_text])
+    |> validate_required([:title, :release_date])
   end
 end

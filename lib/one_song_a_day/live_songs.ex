@@ -27,7 +27,8 @@ defmodule OneSongADay.LiveSongs do
   def list_live_songs do
     query =
       from s in LiveSong,
-        select: struct(s, [:id, :title, :youtube_link, :spotify_link, :release_date]),
+        select:
+          struct(s, [:id, :title, :youtube_link, :spotify_link, :release_date, :tweet_text]),
         where: s.release_date > ^NaiveDateTime.utc_now(),
         order_by: [asc: :release_date]
 
@@ -53,7 +54,8 @@ defmodule OneSongADay.LiveSongs do
   def list_song_of_the_day do
     query =
       from s in LiveSong,
-        select: struct(s, [:id, :title, :youtube_link, :spotify_link, :release_date]),
+        select:
+          struct(s, [:id, :title, :youtube_link, :spotify_link, :release_date, :tweet_text]),
         where: s.release_date > ^NaiveDateTime.utc_now(),
         order_by: [asc: :release_date],
         limit: 1
