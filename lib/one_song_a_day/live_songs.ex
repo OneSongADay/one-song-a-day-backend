@@ -6,7 +6,6 @@ defmodule OneSongADay.LiveSongs do
   import Ecto.Query, warn: false
   alias OneSongADay.Repo
 
-  alias OneSongADay.LiveSongs
   alias OneSongADay.LiveSongs.LiveSong
 
   @topic inspect(__MODULE__)

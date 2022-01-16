@@ -20,6 +20,10 @@
     <%= label f, :spotify_link %>
     <%= text_input f, :spotify_link %>
     <%= error_tag f, :spotify_link %>
+
+    <%= label f, :release_date %>
+    <%= datetime_local_input f, :release_date %>
+    <%= error_tag f, :release_date %>
   
     <div>
       <%= submit "Save", phx_disable_with: "Saving..." %>
