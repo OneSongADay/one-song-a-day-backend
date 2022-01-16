@@ -25,7 +25,12 @@ defmodule OneSongADay.LiveSongs do
 
   """
   def list_live_songs do
-    Repo.all(LiveSong)
+    query =
+      from s in LiveSong,
+        select: struct(s, [:id, :title, :youtube_link, :spotify_link, :release_date]),
+        order_by: [asc: :release_date]
+
+    Repo.all(query)
   end
 
   @doc """
