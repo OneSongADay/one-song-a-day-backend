@@ -1,18 +1,5 @@
-<h1>One Song a Day</h1>
-<span><%= live_patch "Released songs", to: Routes.live_song_released_path(@socket, :released) %></span>
-
-<%= if @live_action in [:new, :edit] do %>
-  <.modal return_to={Routes.live_song_index_path(@socket, :index)}>
-    <.live_component
-      module={OneSongADayWeb.LiveSongLive.FormComponent}
-      id={@live_song.id || :new}
-      title={@page_title}
-      action={@live_action}
-      live_song={@live_song}
-      return_to={Routes.live_song_index_path(@socket, :index)}
-    />
-  </.modal>
-<% end %>
+<h1>Released songs</h1>
+<span><%= live_patch "Future songs", to: Routes.live_song_index_path(@socket, :index) %></span>
 
 <table>
   <thead>
@@ -30,21 +17,15 @@
   <tbody id="live_songs">
     <%= for live_song <- @live_songs do %>
       <%# <%= to:Routes.live_song_show_path(@socket, :show, live_song ) %>  
-      <tr id={"live_song-#{live_song.id}"}>
+      <tr id={"live_song-#{live_song.id}"} style="background-color: #f3f3f3">
         <td><%= if live_song.release_date do %><div><%= Timex.format!(live_song.release_date, "{D}-{0M}-{YYYY}") %></div><% end %></td>
         <td><%= live_redirect live_song.title, to: Routes.live_song_show_path(@socket, :show, live_song) %></td>
         <td><%= live_redirect live_song.author, to: Routes.live_song_show_path(@socket, :show, live_song) %></td>
         <td><%= if live_song.youtube_link do %><div><%= link "youtube", to: "https://youtube.com/watch?v=#{live_song.youtube_link}", target: "blank"%></div><% end %></td>
         <td><%= if live_song.spotify_link do %><div><%= link "spotify", to: live_song.spotify_link, target: "blank"%></div><% end %></td>
         <td><%= if live_song.tweet_text do %>OK<% end %></td>
-
-        <td>
-          <span><%= live_patch "Edit", to: Routes.live_song_index_path(@socket, :edit, live_song) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: live_song.id, data: [confirm: "Are you sure?"] %></span>
-        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<span><%= live_patch "New song", to: Routes.live_song_index_path(@socket, :new) %></span>
