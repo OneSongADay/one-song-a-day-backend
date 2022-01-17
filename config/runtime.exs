@@ -43,7 +43,7 @@ if config_env() == :prod do
   port = String.to_integer(System.get_env("PORT") || "4000")
 
   config :one_song_a_day, OneSongADayWeb.Endpoint,
-    url: [scheme: "https", host: "tranquil-ocean-10935.herokuapp.com", port: 443],
+    url: [scheme: "https", host: "onesongaday.herokuapp.com", port: 443],
     force_ssl: [rewrite_on: [:x_forwarded_proto]],
     http: [
       # Enable IPv6 and bind on all interfaces.
