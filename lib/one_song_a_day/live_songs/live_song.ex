@@ -6,7 +6,7 @@ defmodule OneSongADay.LiveSongs.LiveSong do
     field :spotify_link, :string
     field :title, :string
     field :youtube_link, :string
-    field :release_date, :naive_datetime
+    field :release_date, :date
     field :tweet_text, :string
     field :author, :string
 
