@@ -30,7 +30,7 @@ defmodule OneSongADayWeb.LiveSongLive.Index do
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Admin panel - future songs")
+    |> assign(:page_title, "Listing Live songs")
     |> assign(:live_song, nil)
   end
 

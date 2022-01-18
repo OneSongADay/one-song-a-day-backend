@@ -1,5 +1,4 @@
 <h1>One Song a Day</h1>
-<span><%= live_patch "Released songs", to: Routes.live_song_released_path(@socket, :released) %></span>
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.live_song_index_path(@socket, :index)}>
