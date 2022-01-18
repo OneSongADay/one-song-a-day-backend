@@ -72,7 +72,7 @@ defmodule OneSongADay.LiveSongs do
             :tweet_text,
             :author
           ]),
-        where: s.release_date > ^NaiveDateTime.utc_now(),
+        where: s.release_date == ^NaiveDateTime.utc_now(),
         order_by: [asc: :release_date],
         limit: 1
 
