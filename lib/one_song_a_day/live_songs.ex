@@ -66,7 +66,7 @@ defmodule OneSongADay.LiveSongs do
           struct(s, [
             :id,
             :title,
-            "https://youtu.be/" <> :youtube_link,
+            youtube_link: "https://youtu.be/" <> :youtube_link,
             :spotify_link,
             :release_date,
             :tweet_text,
