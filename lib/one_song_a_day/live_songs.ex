@@ -66,11 +66,11 @@ defmodule OneSongADay.LiveSongs do
           struct(s, [
             :id,
             :title,
-            youtube_link: "https://youtu.be/" <> s.youtube_link,
             :spotify_link,
             :release_date,
             :tweet_text,
-            :author
+            :author,
+            youtube_link: "https://youtu.be/" <> s.youtube_link
           ]),
         where: s.release_date == ^NaiveDateTime.utc_now(),
         order_by: [asc: :release_date],
