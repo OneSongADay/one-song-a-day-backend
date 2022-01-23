@@ -8,7 +8,7 @@ defmodule OneSongADayWeb.LiveSongLive.Index do
   def mount(_params, _session, socket) do
     LiveSongs.subscribe()
 
-    {:ok, assign(fetch(socket), :live_songs, list_live_songs())}
+    {:ok, fetch(socket)}
   end
 
   @impl true
@@ -52,6 +52,8 @@ defmodule OneSongADayWeb.LiveSongLive.Index do
   end
 
   defp fetch(socket) do
-    assign(socket, live_songs: LiveSongs.list_live_songs())
+    socket
+    |> assign(live_songs: LiveSongs.list_live_songs())
+    |> assign(song_of_the_day: LiveSongs.list_song_of_the_day())
   end
 end

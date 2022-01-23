@@ -1,4 +1,4 @@
-<h1>One Song a Day</h1>
+<h1 style="text-align: center;">One Song a Day</h1>
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.live_song_index_path(@socket, :index)}>
@@ -11,6 +11,28 @@
       return_to={Routes.live_song_index_path(@socket, :index)}
     />
   </.modal>
+<% end %>
+
+<%= if @song_of_the_day do %>
+<h2>Song of the day</h2>
+<table>
+   <thead>
+    <tr>
+      <th>Release date</th>
+      <th>Title</th>
+      <th>Author</th>
+    </tr>
+  </thead> 
+  <tbody>
+    <td><%= @song_of_the_day.release_date %></td>
+    <td>
+      <%= live_redirect @song_of_the_day.title, to: Routes.live_song_show_path(@socket, :show, @song_of_the_day) %>
+    </td>
+    <td>
+      <%= live_redirect @song_of_the_day.author, to: Routes.live_song_show_path(@socket, :show, @song_of_the_day) %>
+    </td>
+  </tbody>
+</table>
 <% end %>
 
 <table>
@@ -35,7 +57,7 @@
         <td><%= live_redirect live_song.author, to: Routes.live_song_show_path(@socket, :show, live_song) %></td>
         <td><%= if live_song.youtube_link do %><div><%= link "youtube", to: "https://youtube.com/watch?v=#{live_song.youtube_link}", target: "blank"%></div><% end %></td>
         <td><%= if live_song.spotify_link do %><div><%= link "spotify", to: live_song.spotify_link, target: "blank"%></div><% end %></td>
-        <td><%= if live_song.tweet_text do %>OK<% end %></td>
+        <td><%= if live_song.tweet_text do %>OK<% else %>NO<% end %></td>
 
         <td>
           <span><%= live_patch "Edit", to: Routes.live_song_index_path(@socket, :edit, live_song) %></span>

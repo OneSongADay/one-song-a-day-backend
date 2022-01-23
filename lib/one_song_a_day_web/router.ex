@@ -24,6 +24,7 @@ defmodule OneSongADayWeb.Router do
     live "/", LiveSongLive.Index, :index
     live "/live_songs", LiveSongLive.Index, :index
     live "/live_songs/new", LiveSongLive.Index, :new
+    live "/live_songs/released", LiveSongLive.Index, :released
     live "/live_songs/:id/edit", LiveSongLive.Index, :edit
 
     live "/live_songs/:id", LiveSongLive.Show, :show
