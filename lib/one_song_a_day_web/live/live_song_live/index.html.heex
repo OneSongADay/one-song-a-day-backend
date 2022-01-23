@@ -1,5 +1,13 @@
 <h1 style="text-align: center;">One Song a Day</h1>
 
+<div style="text-align: right;">
+  <%= if @list_title == 'Future songs' do %>
+    <%= link "Old songs", to: "#", phx_click: "show_released_songs"%>
+  <% else %>
+    <%= link "Future songs", to: "#", phx_click: "show_future_songs"%>
+  <% end %>
+</div>
+
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.live_song_index_path(@socket, :index)}>
     <.live_component
@@ -35,6 +43,10 @@
 </table>
 <% end %>
 
+
+<h2>
+<%= @list_title %>
+</h2>
 <table>
   <thead>
     <tr>
@@ -68,4 +80,6 @@
   </tbody>
 </table>
 
-<span><%= live_patch "New song", to: Routes.live_song_index_path(@socket, :new) %></span>
+<%= if @list_title == 'Future songs' do %>
+  <span><%= live_patch "New song", to: Routes.live_song_index_path(@socket, :new) %></span>
+<% end %>

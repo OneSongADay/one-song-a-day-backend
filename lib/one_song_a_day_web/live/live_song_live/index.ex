@@ -43,6 +43,18 @@ defmodule OneSongADayWeb.LiveSongLive.Index do
   end
 
   @impl true
+  def handle_event("show_released_songs", _params, socket) do
+    {:noreply,
+     assign(socket, live_songs: LiveSongs.list_released_songs(), list_title: 'Old songs')}
+  end
+
+  @impl true
+  def handle_event("show_future_songs", _params, socket) do
+    {:noreply,
+     assign(socket, live_songs: LiveSongs.list_live_songs(), list_title: 'Future songs')}
+  end
+
+  @impl true
   def handle_info({LiveSongs, [:live_song | _], _}, socket) do
     {:noreply, fetch(socket)}
   end
@@ -55,5 +67,6 @@ defmodule OneSongADayWeb.LiveSongLive.Index do
     socket
     |> assign(live_songs: LiveSongs.list_live_songs())
     |> assign(song_of_the_day: LiveSongs.list_song_of_the_day())
+    |> assign(list_title: 'Future songs')
   end
 end

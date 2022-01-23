@@ -43,6 +43,25 @@ defmodule OneSongADay.LiveSongs do
     Repo.all(query)
   end
 
+  def list_released_songs do
+    query =
+      from s in LiveSong,
+        select:
+          struct(s, [
+            :id,
+            :title,
+            :youtube_link,
+            :spotify_link,
+            :release_date,
+            :tweet_text,
+            :author
+          ]),
+        where: s.release_date < ^NaiveDateTime.utc_now(),
+        order_by: [asc: :release_date]
+
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single live_song.
 
