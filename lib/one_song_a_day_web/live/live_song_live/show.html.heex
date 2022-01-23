@@ -24,5 +24,7 @@
 
 </ul>
 
-<span><%= live_patch "Edit", to: Routes.live_song_show_path(@socket, :edit, @live_song), class: "button" %></span> |
+<%= if @live_song.release_date > NaiveDateTime.utc_now() do %>
+  <span><%= live_patch "Edit", to: Routes.live_song_show_path(@socket, :edit, @live_song), class: "button" %></span> |
+<% end %>
 <span><%= live_redirect "Back", to: Routes.live_song_index_path(@socket, :index) %></span>
