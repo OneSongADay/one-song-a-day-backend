@@ -9,6 +9,7 @@ defmodule OneSongADay.Twitter do
 
   defp default_tweet(live_song) do
     "🎵 La canción del día ya disponible en #OneSongADay!!
+
     Hoy os traemos #{live_song.title} de #{live_song.author} TODO Twitter autor!!
 
     Spotify: #{live_song.spotify_link}
