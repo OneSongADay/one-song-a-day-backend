@@ -11,11 +11,11 @@ defmodule OneSongADay.Twitter do
     "🎵 La canción del día ya disponible en #OneSongADay!!
 
     Hoy os traemos \"#{live_song.title}\" de #{live_song.author}#{if live_song.author_twitter do
-      " (\@#{live_song.author_twitter})"
+      " (\%40#{live_song.author_twitter})"
     end}!!
 
     Spotify: #{live_song.spotify_link}
 
-    Youtube: https://youtu.be/#{live_song.youtube_link}"
+    YouTube: https://youtu.be/#{live_song.youtube_link}"
   end
 end
