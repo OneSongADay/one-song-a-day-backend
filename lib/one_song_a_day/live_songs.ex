@@ -36,7 +36,7 @@ defmodule OneSongADay.LiveSongs do
             :release_date,
             :tweet_text,
             :author,
-            :author_tweet
+            :author_twitter
           ]),
         where: s.release_date > ^NaiveDateTime.utc_now(),
         order_by: [asc: :release_date]
@@ -90,7 +90,8 @@ defmodule OneSongADay.LiveSongs do
             :spotify_link,
             :release_date,
             :tweet_text,
-            :author
+            :author,
+            :author_twitter
           ]),
         where: s.release_date == ^NaiveDateTime.utc_now(),
         order_by: [asc: :release_date],

@@ -9,7 +9,7 @@ defmodule OneSongADay.LiveSongs.LiveSong do
     field :release_date, :date
     field :tweet_text, :string
     field :author, :string
-    field :author_tweet, :string
+    field :author_twitter, :string
 
     timestamps()
   end
@@ -24,7 +24,7 @@ defmodule OneSongADay.LiveSongs.LiveSong do
       :release_date,
       :tweet_text,
       :author,
-      :author_tweet
+      :author_twitter
     ])
     |> validate_required([:title, :release_date])
   end

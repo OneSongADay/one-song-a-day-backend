@@ -68,7 +68,7 @@
         <td><%= if live_song.release_date do %><div><%= Timex.format!(live_song.release_date, "{D}-{0M}-{YYYY}") %></div><% end %></td>
         <td><%= live_redirect live_song.title, to: Routes.live_song_show_path(@socket, :show, live_song) %></td>
         <td><%= live_redirect live_song.author, to: Routes.live_song_show_path(@socket, :show, live_song) %></td>
-        <td><%= live_redirect live_song.author_tweet, to: Routes.live_song_show_path(@socket, :show, live_song) %></td>
+        <td><%= live_redirect live_song.author_twitter, to: Routes.live_song_show_path(@socket, :show, live_song) %></td>
         <td><%= if live_song.youtube_link do %><div><%= link "youtube", to: "https://youtube.com/watch?v=#{live_song.youtube_link}", target: "blank"%></div><% end %></td>
         <td><%= if live_song.spotify_link do %><div><%= link "spotify", to: live_song.spotify_link, target: "blank"%></div><% end %></td>
         <td><%= if live_song.tweet_text do %>OK<% else %>NO<% end %></td>
