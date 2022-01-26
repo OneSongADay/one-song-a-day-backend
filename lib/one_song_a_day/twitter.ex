@@ -1,8 +1,7 @@
 defmodule OneSongADay.Twitter do
   def process_tweet(live_song) do
     if(live_song.tweet_text == nil) do
-      {:ok, text} = Jason.encode(default_tweet(live_song))
-      text
+      default_tweet(live_song)
     else
       live_song.tweet_text
     end
